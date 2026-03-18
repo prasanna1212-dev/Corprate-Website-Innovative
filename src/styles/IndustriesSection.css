@@ -1,0 +1,265 @@
+/* ─────────────────────────────────────────
+   IndustriesSection.css   prefix: wic-
+───────────────────────────────────────── */
+
+/* ── Scroll wrapper ── */
+.wic-scroll-wrapper {
+  position: relative;
+  height: 280vh;
+}
+
+/* ── Sticky pin ── */
+.wic-sticky-pin {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+
+}
+
+/* ── Section shell ── */
+.wic-section {
+  width: 100%;
+  height: 100vh;                /* match sticky pin exactly */
+  display: flex;
+  flex-direction: column;
+  padding: 40px 6% 0;
+  /* background: #f7f8fc; */
+  /* overflow: hidden;    */
+}
+
+/* ── Header ── */
+.wic-header {
+flex-shrink: 0;               /* never compress */
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 10;                  /* always above animated cards */
+  background: #fafcfd;
+  padding-bottom: 0;
+}
+
+.wic-eyebrow {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #bf3928;
+  margin-bottom: 10px;
+  padding: 5px 14px;
+  background: rgba(191, 57, 40, 0.08);
+  border-radius: 20px;
+}
+
+.wic-heading {
+  font-size: 30px;
+  font-weight: 700;
+  color: #16162a;
+  margin: 0 0 10px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.wic-subhead {
+  font-size: 14.5px;
+  color: #5a5a72;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Grid clip — overflow scoped here only ── */
+.wic-grid-clip {
+  flex: 1;
+  /* overflow: hidden; */
+  isolation: isolate;
+  padding-top: 80px;       /* ← absorbs col-two's max -80px offset */
+  margin-top: -80px;       /* ← pulls box back up so header gap stays tight */
+  padding-bottom: 120px;
+  margin-bottom: -120px;
+
+}
+
+/* ── 3-col subgrid ── */
+.wic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  column-gap: 22px;
+  row-gap: 20px;
+}
+
+/* ── Column — JS drives transform via inline style ── */
+.wic-col {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  will-change: transform;
+}
+
+/* ─────────────────────────────────────────
+   CARD  (ported from indc in doc-12)
+───────────────────────────────────────── */
+.wic-card {
+  border-radius: 16px;
+  padding: 28px 22px 26px;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  cursor: default;
+  transition:
+    background   0.32s ease,
+    box-shadow   0.32s ease,
+    transform    0.28s ease,
+    border-color 0.32s ease;
+  will-change: transform;
+}
+
+/* Hover — flip to white (same as indc:hover) */
+.wic-card:hover {
+  background: #ffffff !important;
+  border-color: #dde0ea !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.11);
+  transform: translateY(-6px);
+}
+
+/* ─── Icon wrapper (ported from indc__icon-wrap) ─── */
+.wic-icon {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+/* ─── Icon svg (ported from indc__icon) ─── */
+.wic-icon__svg {
+  width: 42px;
+  height: 42px;
+  color: #bf3928;
+  transition: transform 0.28s ease;
+}
+
+.wic-card:hover .wic-icon__svg {
+  transform: scale(1.14);
+}
+
+/* ─── Typography (ported from indc__title / indc__desc) ─── */
+.wic-card__title {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #16162a;
+  margin: 0 0 10px;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.wic-card__desc {
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: #5a5a72;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────
+   Card tone palettes (ported from doc-12)
+───────────────────────────────────────── */
+.wic-card--lavender { background: #edeaf8; border-color: #d5cff0; }
+.wic-card--blue     { background: #e2eff9; border-color: #bfd8f2; }
+.wic-card--peach    { background: #fdf0e2; border-color: #f5d8b2; }
+.wic-card--yellow   { background: #fef8df; border-color: #f3e298; }
+.wic-card--teal     { background: #e2f5f0; border-color: #b4dfd5; }
+.wic-card--pink     { background: #fbe8ea; border-color: #f2c4c8; }
+.wic-card--gray     { background: #edeef4; border-color: #d4d7e4; }
+.wic-card--green    { background: #e6f4e6; border-color: #bbdcbb; }
+
+/* ─────────────────────────────────────────
+   Responsive — scroll wrapper heights
+   unchanged from previous reference
+───────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .wic-heading { font-size: 26px; }
+  .wic-grid    { column-gap: 18px; }
+}
+
+@media (max-width: 860px) {
+  .wic-scroll-wrapper { height: 320vh; }
+
+  .wic-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, auto) repeat(3, auto);
+  }
+
+  .wic-col--one   { grid-column: 1; grid-row: 1 / span 2; }
+  .wic-col--two   { grid-column: 2; grid-row: 1 / span 2; }
+
+  .wic-col--three {
+    grid-column: 1 / -1;
+    grid-row: 3 / span 3;
+    grid-template-rows: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Disable parallax on tablet — too disorienting */
+  .wic-col--one,
+  .wic-col--two,
+  .wic-col--three {
+    will-change: auto;
+  }
+}
+
+@media (max-width: 600px) {
+   .wic-scroll-wrapper { height: 350vh; }
+
+  /* ✅ Keep height: 100vh — removing it was what broke the pin */
+  .wic-sticky-pin {
+    height: 100vh;
+    align-items: flex-start;
+    padding-top: 0;
+  }
+
+  .wic-section {
+    padding: 32px 4% 0;
+    height: 100vh;
+  }
+  .wic-heading { font-size: 22px; }
+
+  .wic-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: unset;
+  }
+
+  .wic-col {
+    grid-row: unset;
+    grid-template-rows: unset;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wic-col--three {
+    grid-column: unset;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wic-card { padding: 20px 16px; border-radius: 12px; }
+  .wic-card__title { font-size: 15px; }
+  .wic-card__desc  { font-size: 13px; }
+  .wic-icon__svg   { width: 36px; height: 36px; }
+}
+
+@media (max-width: 380px) {
+  .wic-card        { padding: 16px 14px; }
+  .wic-card__title { font-size: 14.5px; }
+  .wic-card__desc  { font-size: 12.5px; line-height: 1.65; }
+}

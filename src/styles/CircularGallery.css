@@ -1,0 +1,30 @@
+/* ── CircularGallery container ── */
+.circular-gallery {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  position: relative;
+  /* transparent bg so parent section colour shows through */
+  background: transparent;
+}
+
+.circular-gallery:active {
+  cursor: grabbing;
+}
+
+/* The OGL canvas that gets injected as a child */
+.circular-gallery canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  /* keep it pixel-sharp on retina */
+  image-rendering: auto;
+}
+
+/* ── Touch / pointer refinements ── */
+.circular-gallery * {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-drag: none;
+}

@@ -1,0 +1,311 @@
+/* ══════════════════════════════════════════════════
+   TESTIMONIALS SECTION  —  prefix: tsm-
+   Enterprise theme — matches site palette
+   ══════════════════════════════════════════════════ */
+
+/* ── Tall wrapper ── */
+.tsm-wrapper {
+  position: relative;
+}
+
+/* ── Sticky pin ── */
+.tsm-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* ── Section header ── */
+.tsm-header {
+  padding: 52px 80px 20px;
+  flex-shrink: 0;
+}
+
+.tsm-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e11d48;
+  margin-bottom: 12px;
+}
+
+.tsm-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+
+.tsm-subtext {
+  font-size: 16px;
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Viewport ── */
+.tsm-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 16px 0;
+}
+
+/* ── Track ── */
+.tsm-track {
+  display: flex;
+  gap: 28px;
+  padding: 12px 120px 12px 80px;
+  will-change: transform;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   CARD
+   ══════════════════════════════════════════════════ */
+.tsm-card {
+  position: relative;
+  width: 480px;
+  min-height: 360px;
+  border-radius: 24px;
+  padding: 36px 36px 32px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.07),
+    0 6px 16px rgba(15, 23, 42, 0.04);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tsm-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 32px 64px rgba(15, 23, 42, 0.11),
+    0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+/* ── Top accent bar (colored per variant) ── */
+.tsm-card__accent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 24px 24px 0 0;
+}
+
+/* ── Rose variant (primary brand red) ── */
+.tsm-card--rose {
+  background: linear-gradient(160deg, #fff5f7 0%, #ffffff 60%);
+}
+.tsm-card--rose .tsm-card__accent-bar {
+  background: linear-gradient(90deg, #e11d48, #fb7185);
+}
+.tsm-card--rose .tsm-quote-mark    { color: rgba(225, 29, 72, 0.08); }
+.tsm-card--rose .tsm-meta-dot      { background: rgba(225, 29, 72, 0.25); }
+.tsm-card--rose .tsm-card__role    { color: #e11d48; }
+.tsm-card--rose .tsm-card__meta    { border-color: rgba(225, 29, 72, 0.10); }
+
+/* ── Cyan variant ── */
+.tsm-card--cyan {
+  background: linear-gradient(160deg, #f0fbff 0%, #ffffff 60%);
+}
+.tsm-card--cyan .tsm-card__accent-bar {
+  background: linear-gradient(90deg, #0891b2, #22d3ee);
+}
+.tsm-card--cyan .tsm-quote-mark    { color: rgba(8, 145, 178, 0.08); }
+.tsm-card--cyan .tsm-meta-dot      { background: rgba(8, 145, 178, 0.25); }
+.tsm-card--cyan .tsm-card__role    { color: #0891b2; }
+.tsm-card--cyan .tsm-card__meta    { border-color: rgba(8, 145, 178, 0.10); }
+
+/* ── Indigo variant ── */
+.tsm-card--indigo {
+  background: linear-gradient(160deg, #f5f3ff 0%, #ffffff 60%);
+}
+.tsm-card--indigo .tsm-card__accent-bar {
+  background: linear-gradient(90deg, #4f46e5, #818cf8);
+}
+.tsm-card--indigo .tsm-quote-mark  { color: rgba(79, 70, 229, 0.08); }
+.tsm-card--indigo .tsm-meta-dot    { background: rgba(79, 70, 229, 0.25); }
+.tsm-card--indigo .tsm-card__role  { color: #4f46e5; }
+.tsm-card--indigo .tsm-card__meta  { border-color: rgba(79, 70, 229, 0.10); }
+
+/* ── Large decorative quote mark ── */
+.tsm-quote-mark {
+  position: absolute;
+  top: 18px;
+  right: 28px;
+  font-size: 96px;
+  line-height: 1;
+  font-family: Georgia, serif;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Profile row (avatar + name + role) ── */
+.tsm-card__profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Avatar ── */
+.tsm-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  box-shadow:
+    0 6px 20px rgba(15, 23, 42, 0.14),
+    0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.tsm-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Identity ── */
+.tsm-card__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tsm-card__name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.tsm-card__role {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ── Quote text ── */
+.tsm-card__text {
+  font-size: 15px;
+  line-height: 1.78;
+  color: #475569;
+  flex: 1;
+  margin-bottom: 24px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Meta items ── */
+.tsm-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1px solid;
+}
+
+.tsm-meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tsm-meta-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.tsm-meta-text {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #64748b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Progress dots ── */
+.tsm-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 0 28px;
+  flex-shrink: 0;
+}
+
+.tsm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.15);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tsm-dot--active {
+  width: 28px;
+  border-radius: 4px;
+  background: #e11d48;
+}
+
+/* ── Nav button reset ── */
+.site-nav__link--btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .tsm-header {
+    padding: 36px 24px 16px;
+  }
+
+  .tsm-track {
+    gap: 20px;
+    padding: 12px 40px 12px 24px;
+  }
+
+  .tsm-card {
+    width: 300px;
+    min-height: 300px;
+    padding: 28px 24px 24px;
+    border-radius: 18px;
+  }
+
+  .tsm-avatar {
+    width: 56px;
+    height: 56px;
+  }
+
+  .tsm-card__name  { font-size: 17px; }
+  .tsm-card__text  { font-size: 13.5px; }
+  .tsm-quote-mark  { font-size: 72px; }
+}

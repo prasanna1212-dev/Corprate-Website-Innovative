@@ -1,0 +1,35 @@
+.tsm-page {
+  position: relative;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.tsm-page__topbar {
+  position: fixed;
+  top: 10px;
+  left: 14px;
+  z-index: 200;
+}
+
+.tsm-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+.tsm-page__back:hover {
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  transform: translateX(-3px);
+}

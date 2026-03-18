@@ -1,0 +1,416 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --about-bg: #f8fafc;
+  --about-surface: rgba(255, 255, 255, 0.72);
+  --about-surface-strong: rgba(255, 255, 255, 0.92);
+  --about-border: rgba(15, 23, 42, 0.08);
+  --about-text: #0f172a;
+  --about-text-muted: #475569;
+  --about-text-soft: #64748b;
+  --about-primary: #e11d48;
+  --about-primary-soft: rgba(225, 29, 72, 0.1);
+  --about-secondary: #4f46e5;
+  --about-cyan: #0891b2;
+  --about-radius-xl: 32px;
+  --about-radius-lg: 24px;
+  --about-radius-md: 18px;
+  --about-radius-sm: 14px;
+  --about-shell: 1280px;
+  --about-shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --about-shadow-hover: 0 26px 60px rgba(15, 23, 42, 0.12);
+  --about-transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.services-page {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 20px 100px;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(79, 70, 229, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(225, 29, 72, 0.08),
+      transparent 24%
+    ),
+    linear-gradient(180deg, #ffffff 0%, var(--about-bg) 100%);
+  font-family: "Inter", sans-serif;
+  color: var(--about-text);
+}
+
+.services-shell {
+  max-width: var(--about-shell);
+  margin: 0 auto;
+}
+
+.services-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 720px) minmax(320px, 420px);
+  justify-content: space-between;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 56px;
+}
+
+.services-hero-copy {
+  padding: 36px;
+  border-radius: var(--about-radius-xl);
+  background: var(--about-surface);
+  border: 1px solid var(--about-border);
+  box-shadow: var(--about-shadow-soft);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.services-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--about-primary-soft);
+  color: var(--about-primary);
+  font-family: "Outfit", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+}
+
+.services-hero-copy h1 {
+  margin: 0 0 18px;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(2.4rem, 4vw, 4.3rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.services-hero-copy h1 span {
+  display: block;
+  color: var(--about-secondary);
+}
+
+.services-hero-copy p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--about-text-muted);
+}
+
+.services-points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.point-card {
+  padding: 18px 20px;
+  border-radius: var(--about-radius-md);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  transition: var(--about-transition);
+}
+
+.point-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+}
+
+.point-card strong {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--about-text);
+}
+
+.point-card span {
+  color: var(--about-text-soft);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+/* ---------- FIXED CARD CAROUSEL LAYOUT ---------- */
+
+.services-hero-visual {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.services-card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.card-swap-container {
+  position: relative;
+  width: 330px !important;
+  height: 410px !important;
+  margin: 0 auto;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  overflow: visible;
+}
+
+/* CardSwap card styling */
+.card-swap-container .card,
+.service-swap-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  border-radius: 28px !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  background: #0f172a !important;
+  box-shadow: 0 30px 70px rgba(15, 23, 42, 0.28);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.service-swap-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.service-swap-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.02);
+}
+
+.service-swap-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.05) 0%,
+    rgba(15, 23, 42, 0.22) 45%,
+    rgba(15, 23, 42, 0.88) 100%
+  );
+}
+
+.service-swap-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px 24px 24px;
+  z-index: 2;
+  color: #fff;
+}
+
+.service-swap-id {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.service-swap-content h3 {
+  margin: 0 0 8px;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.7rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.service-swap-content p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.96rem;
+  letter-spacing: 0.02em;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.service-info-card {
+  padding: 28px 24px;
+  border-radius: 26px;
+  background: var(--about-surface);
+  border: 1px solid var(--about-border);
+  box-shadow: var(--about-shadow-soft);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: var(--about-transition);
+}
+
+.service-info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--about-shadow-hover);
+}
+
+.service-info-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.service-info-header span {
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--about-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.service-info-header h2 {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--about-text);
+}
+
+.service-info-card p {
+  margin: 0;
+  color: var(--about-text-muted);
+  line-height: 1.85;
+  font-size: 0.98rem;
+}
+
+.services-summary {
+  margin-top: 34px;
+  padding: 34px;
+  border-radius: var(--about-radius-xl);
+  background: var(--about-surface-strong);
+  border: 1px solid var(--about-border);
+  box-shadow: var(--about-shadow-soft);
+  text-align: center;
+}
+
+.services-summary h3 {
+  margin: 0 0 12px;
+  font-family: "Outfit", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--about-text);
+}
+
+.services-summary p {
+  max-width: 900px;
+  margin: 0 auto;
+  color: var(--about-text-muted);
+  line-height: 1.85;
+  font-size: 1rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1100px) {
+  .services-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-hero-visual {
+    min-height: 480px;
+  }
+
+  .services-card-stack {
+    max-width: 390px;
+    height: 480px;
+  }
+
+  .card-swap-container {
+    transform: scale(0.92);
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-page {
+    padding: 64px 16px 80px;
+  }
+
+  .services-hero-copy,
+  .services-summary,
+  .service-info-card {
+    padding: 24px;
+  }
+
+  .services-hero-copy h1 {
+    font-size: 2.3rem;
+  }
+
+  .services-hero-visual {
+    min-height: 400px;
+  }
+
+  .services-card-stack {
+    max-width: 320px;
+    height: 400px;
+  }
+
+  .card-swap-container {
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-hero-visual {
+    min-height: 320px;
+  }
+
+  .services-card-stack {
+    max-width: 260px;
+    height: 320px;
+  }
+
+  .card-swap-container {
+    transform: scale(0.64);
+    transform-origin: center center;
+  }
+
+  .service-swap-content h3 {
+    font-size: 1.35rem;
+  }
+
+  .services-summary h3 {
+    font-size: 1.5rem;
+  }
+}

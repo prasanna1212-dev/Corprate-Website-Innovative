@@ -1,0 +1,512 @@
+/* ── Section shell ───────────────────────────────────────────────────────── */
+.cs-section {
+  position: relative;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  background: #f4f4f4;
+  overflow: hidden;
+}
+
+/* ── Red banner ──────────────────────────────────────────────────────────── */
+.cs-banner {
+  background: #e11d48;
+  width: 100%;
+  height: 230px;
+  padding: 56px 80px 0;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.cs-banner__text { max-width: 560px; }
+
+.cs-banner__title {
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 14px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-family: "Outfit", "Inter", sans-serif;
+}
+
+.cs-banner__sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Two-col body ────────────────────────────────────────────────────────── */
+.cs-body {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 80px 80px;
+  gap: 10%;
+}
+
+/* ── Left column — card ──────────────────────────────────────────────────── */
+.cs-card-col {
+  flex: 1;
+  min-width: 0;
+  margin-top: -62px;
+  position: relative;
+  z-index: 5;
+  padding-right: 40px;
+}
+
+/* ── White card ──────────────────────────────────────────────────────────── */
+.cs-card {
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.07),
+    0 12px 40px rgba(0, 0, 0, 0.09);
+  padding: 48px 52px 56px;
+  width: 100%;
+}
+
+/* ── Avatar zone ─────────────────────────────────────────────────────────── */
+.cs-avatar-zone {
+  flex-shrink: 0;
+  width: 340px;
+  height: 490px;
+  position: relative;
+  margin-top: -150px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.cs-avatars__dots {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  top: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.28;
+  z-index: 1;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.cs-avatar {
+  position: absolute;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.cs-avatar__bg {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.cs-avatar__img {
+  position: absolute;
+  z-index: 2;
+  width: 120%;
+  height: 120%;
+  left: -10%;
+  top: -10%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.cs-avatar--a {
+  width: 200px; height: 200px;
+  top: 40px; right: 0;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 80%;
+  border-bottom-right-radius: 80%;
+}
+.cs-avatar--a .cs-avatar__img { width: 110%; height: 110%; left: -5%; top: 0; }
+
+.cs-avatar--b {
+  width: 138px; height: 148px;
+  top: 172px; left: -20px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 80%;
+  border-bottom-left-radius: 80%;
+}
+.cs-avatar--b .cs-avatar__img { width: 115%; height: 115%; left: -8%; top: -8%; }
+
+.cs-avatar--c {
+  width: 118px; height: 118px;
+  top: 258px; right: 20px;
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+}
+.cs-avatar--c .cs-avatar__img { width: 115%; height: 115%; left: -8%; top: -8%; }
+
+.cs-avatar--d {
+  width: 128px; height: 132px;
+  top: 342px; left: 84px;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 80%;
+  border-bottom-left-radius: 80%;
+}
+.cs-avatar--d .cs-avatar__img { width: 115%; height: 115%; left: -8%; top: -8%; }
+
+.cs-reaction {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.cs-reaction--heart { top: 112px; right: 198px; }
+.cs-reaction--hands { top: 368px; left: 4px; }
+
+/* ── Card labels ─────────────────────────────────────────────────────────── */
+.cs-card__label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d1c1d;
+  margin: 0 0 18px;
+  line-height: 1;
+}
+
+.cs-card__label--mt { margin-top: 34px; }
+
+/* ── Topic chips ─────────────────────────────────────────────────────────── */
+.cs-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cs-topic-chip {
+  background: #ffffff;
+  border: 1.5px solid #c8c9ca;
+  border-radius: 24px;
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d1c1d;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+  font-family: inherit;
+  line-height: 1;
+  pointer-events: all;
+}
+
+.cs-topic-chip:hover {
+  border-color: #e11d48;
+  color: #e11d48;
+  background: rgba(225, 29, 72, 0.04);
+}
+
+.cs-topic-chip--active {
+  background: #e11d48;
+  border-color: #e11d48;
+  color: #ffffff;
+}
+
+/* ── Existing input ──────────────────────────────────────────────────────── */
+.cs-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #c8c9ca;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #1d1c1d;
+  background: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-input::placeholder { color: #a8a9ab; }
+
+.cs-input:focus {
+  border-color: #e11d48;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.10);
+}
+
+/* ── Submit ──────────────────────────────────────────────────────────────── */
+.cs-submit {
+  background: #dddddd;
+  border: none;
+  border-radius: 4px;
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  color: #616061;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: inherit;
+  pointer-events: all;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cs-submit:hover {
+  background: #e11d48;
+  color: #ffffff;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CARD INTERNAL — divider + bottom two-col
+════════════════════════════════════════════════════════════════════════════ */
+.cs-card__divider {
+  width: 100%;
+  height: 1px;
+  background: #ebebeb;
+  margin: 36px 0;
+}
+
+.cs-card__bottom {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* Vertical divider between info and form */
+.cs-card__col-divider {
+  width: 1px;
+  align-self: stretch;
+  background: #ebebeb;
+  margin: 0 48px;
+  flex-shrink: 0;
+}
+
+/* ── Left — info col ─────────────────────────────────────────────────────── */
+.cs-info-col {
+  flex: 0 0 260px;
+}
+
+.cs-info-col__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111111;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  font-family: "Outfit", "Inter", sans-serif;
+  line-height: 1.2;
+}
+
+.cs-info-col__divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin-bottom: 36px;
+}
+
+.cs-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.cs-info-item__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(225, 29, 72, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e11d48;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cs-info-item__label {
+  font-size: 12.5px;
+  color: #9a9a9a;
+  margin: 0 0 5px;
+  line-height: 1;
+}
+
+.cs-info-item__value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cs-info-item__value--link {
+  text-decoration: none;
+  color: #111111;
+  transition: color 0.18s ease;
+}
+
+.cs-info-item__value--link:hover { color: #e11d48; }
+
+/* ── Right — form col ────────────────────────────────────────────────────── */
+.cs-form-col {
+  flex: 1;
+  min-width: 0;
+  padding-top: 52px;
+}
+
+.cs-form-col__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111111;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+  font-family: "Outfit", "Inter", sans-serif;
+  line-height: 1.2;
+}
+
+.cs-form-col__divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin-bottom: 32px;
+}
+
+/* 2-column grid for form fields */
+.cs-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+  margin-bottom: 28px;
+}
+
+.cs-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Message textarea spans full width */
+.cs-form-field--full {
+  grid-column: 1 / -1;
+}
+
+.cs-form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1;
+}
+
+.cs-form-label__req {
+  color: #e11d48;
+  margin-left: 2px;
+}
+
+.cs-form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111111;
+  background: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.cs-form-input::placeholder { color: #b0b0b0; }
+
+.cs-form-input:focus {
+  border-color: #e11d48;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.09);
+}
+
+/* Select arrow */
+.cs-form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+.cs-form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* Submit button — dark pill */
+.cs-form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  background: #111111;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  transition: background 0.2s ease, transform 0.18s ease;
+}
+
+.cs-form-submit:hover {
+  background: #e11d48;
+  transform: translateY(-2px);
+}
+
+.cs-form-submit__icon {
+  transition: transform 0.18s ease;
+}
+
+.cs-form-submit:hover .cs-form-submit__icon {
+  transform: translate(2px, -2px);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .cs-body             { padding: 0 48px 72px; }
+  .cs-contact-row      { padding: 0 48px 72px; }
+  .cs-avatar-zone      { width: 300px; margin-top: -130px; }
+  .cs-avatar--a        { width: 175px; height: 178px; }
+  .cs-avatar--b        { width: 122px; height: 132px; top: 158px; }
+  .cs-avatar--c        { width: 106px; height: 106px; top: 236px; }
+  .cs-avatar--d        { width: 114px; height: 118px; top: 314px; left: 72px; }
+  .cs-reaction--heart  { right: 172px; }
+  .cs-info-col         { flex: 0 0 280px; }
+  .cs-contact-row__divider { margin: 48px 40px; }
+}
+
+@media (max-width: 900px) {
+  .cs-banner           { height: 190px; padding: 48px 32px 0; }
+  .cs-body             { padding: 0 32px 60px; flex-direction: column; }
+  .cs-card-col         { margin-top: -56px; padding-right: 0; width: 100%; }
+  .cs-card             { padding: 36px 32px 44px; }
+  .cs-avatar-zone      { display: none; }
+  .cs-banner__title    { font-size: 40px; }
+  .cs-card__bottom     { flex-direction: column; }
+  .cs-card__col-divider{ width: 100%; height: 1px; margin: 28px 0; align-self: auto; }
+  .cs-info-col         { flex: none; width: 100%; }
+  .cs-form-col         { width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .cs-banner           { height: 170px; padding: 40px 24px 0; }
+  .cs-body             { padding: 0 20px 48px; }
+  .cs-card-col         { margin-top: -48px; }
+  .cs-card             { padding: 28px 22px 36px; }
+  .cs-banner__title    { font-size: 32px; }
+  .cs-banner__sub      { font-size: 15px; }
+  .cs-contact-row      { padding: 0 20px 48px; }
+  .cs-form-grid        { grid-template-columns: 1fr; }
+  .cs-form-field--full { grid-column: 1; }
+}
