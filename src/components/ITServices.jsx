@@ -20,36 +20,31 @@ const services = [
 
 const highlights = [
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22">
-        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-      </svg>
-    ),
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
     title: "Fast Response",
     desc: "Quick issue resolution with proactive support and real-time monitoring.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-    ),
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
     title: "Secure Systems",
     desc: "Reliable network, server, and security management services.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-      </svg>
-    ),
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
     title: "Scalable Support",
     desc: "End-to-end managed IT support for teams at any scale.",
   },
 ];
 
+const heroStats = [
+  { val: "12+",  lbl: "Service Types" },
+  { val: "500+", lbl: "Assets Managed" },
+  { val: "24/7", lbl: "Support Coverage" },
+  { val: "15+",  lbl: "Years Experience" },
+];
+
 /* ── useInView ── */
-function useInView(threshold = 0.12) {
+function useInView(threshold = 0.1) {
   const ref = useRef(null);
   const [v, setV] = useState(false);
   useEffect(() => {
@@ -66,124 +61,169 @@ function useInView(threshold = 0.12) {
 function ServiceCard({ service, index }) {
   const [ref, inView] = useInView(0.08);
   return (
-    <div
-      ref={ref}
-      className={`its-card ${inView ? "its-card--in" : ""}`}
-      style={{ transitionDelay: `${(index % 3) * 80}ms` }}
-    >
+    <div ref={ref} className={`its-card ${inView ? "its-card--in" : ""}`}
+      style={{ transitionDelay: `${(index % 3) * 80}ms` }}>
       <div className="its-card-top">
         <span className="its-card-num">{String(index + 1).padStart(2, "0")}</span>
         <span className="its-card-arrow">↗</span>
       </div>
       <h3 className="its-card-title">{service}</h3>
-      <p className="its-card-desc">
-        Reliable, scalable and proactive support tailored for modern business infrastructure.
-      </p>
+      <p className="its-card-desc">Reliable, scalable and proactive support tailored for modern business infrastructure.</p>
       <div className="its-card-bar" />
-    </div>
-  );
-}
-
-function HighlightCard({ h, delay }) {
-  const [ref, inView] = useInView(0.15);
-  return (
-    <div
-      ref={ref}
-      className={`its-hl-card ${inView ? "its-hl-card--in" : ""}`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      <div className="its-hl-icon">{h.icon}</div>
-      <h3 className="its-hl-title">{h.title}</h3>
-      <p className="its-hl-desc">{h.desc}</p>
     </div>
   );
 }
 
 export default function ITServices() {
   const [heroRef, heroIn] = useInView(0.05);
+  const [aboutRef, aboutIn] = useInView(0.08);
   const [gridRef, gridIn] = useInView(0.05);
 
   return (
     <section className="its-root">
 
-      {/* abstract bg vector */}
-      <img
-        src={abstractVector}
-        alt=""
-        className="its-abstract-bg"
-        aria-hidden="true"
-      />
-
-      {/* ── HERO ── */}
+      {/* ══ HERO — dark cinematic fullscreen ══ */}
       <div className="its-hero" ref={heroRef}>
 
-        {/* left text */}
-        <div className={`its-hero-left ${heroIn ? "its-hero-left--in" : ""}`}>
-          <span className="its-badge">Managed IT Solutions</span>
+        {/* full-bleed background */}
+        <div className="its-hero-bg">
+          <img src={itServicesImg} alt=""
+            className={`its-hero-bg-img ${heroIn ? "its-hero-bg-img--in" : ""}`} />
+          <div className="its-hero-bg-overlay" />
+          <div className={`its-hero-grid ${heroIn ? "its-hero-grid--in" : ""}`} />
+        </div>
 
-          <h1 className="its-hero-h1">
-            Empowering Businesses with
-            <em> Robust IT Infrastructure</em>
-          </h1>
-
-          <p className="its-hero-p">
-            IT infrastructure plays a vital role in every organisation. A robust and
-            well-maintained IT infrastructure enhances business performance. We offer
-            a comprehensive range of managed IT services including Desktop Management,
-            Managed Server Solutions, Network Management, and Security Management.
-          </p>
-
-          <p className="its-hero-p its-hero-p--muted">
-            With our combined skill set and experience, our support team responds quickly,
-            resolves issues proactively, and ensures smooth management of all your IT assets.
-          </p>
-
-          <div className="its-hl-grid">
-            {highlights.map((h, i) => (
-              <HighlightCard key={i} h={h} delay={i * 100} />
+        {/* top bar */}
+        <div className={`its-topbar ${heroIn ? "its-topbar--in" : ""}`}>
+          <div className="its-topbar-brand">
+            <span className="its-topbar-dot" />
+            <span>i-Soft Solutions</span>
+          </div>
+          <div className="its-topbar-tags">
+            {["IT Services", "AMC", "Facility Mgmt", "Security"].map((b, i) => (
+              <span key={b} className="its-topbar-tag"
+                style={{ animationDelay: `${0.6 + i * 0.1}s` }}>{b}</span>
             ))}
           </div>
         </div>
 
-        {/* right — original image kept, with floating cards */}
-        <div className={`its-hero-right ${heroIn ? "its-hero-right--in" : ""}`}>
-          <div className="its-image-wrapper">
-            {/* glow orbs */}
-            <div className="its-glow its-glow-one" />
-            <div className="its-glow its-glow-two" />
-
-            {/* main image — same as original */}
-            <img
-              src={itServicesImg}
-              alt="IT Services"
-              className="its-main-image"
-            />
-
-            {/* floating stat cards over the image */}
-            <div className="its-stat-card its-sc1">
-              <span className="its-sc-num">12+</span>
-              <span className="its-sc-lbl">Service Types</span>
-            </div>
-            <div className="its-stat-card its-sc2">
-              <span className="its-sc-dot" />
-              <span className="its-sc-lbl">24/7 Monitoring</span>
-            </div>
-            <div className="its-stat-card its-sc3">
-              <span className="its-sc-num">500+</span>
-              <span className="its-sc-lbl">Assets Managed</span>
-            </div>
+        {/* centre content */}
+        <div className="its-hero-centre">
+          <div className={`its-hero-eyebrow ${heroIn ? "its-hero-eyebrow--in" : ""}`}>
+            <span className="its-eline" />
+            <span>Managed IT Solutions</span>
+            <span className="its-eline" />
           </div>
+
+          <h1 className={`its-hero-h1 ${heroIn ? "its-hero-h1--in" : ""}`}>
+            <span className="its-hw" style={{ "--d": "0s" }}>Empowering</span>
+            <span className="its-hw its-hw-accent" style={{ "--d": "0.12s" }}>Businesses</span>
+            <br />
+            <span className="its-hw" style={{ "--d": "0.22s" }}>with Robust</span>
+            <br />
+            <span className="its-hw its-hw-outline" style={{ "--d": "0.34s" }}>IT</span>
+            <span className="its-hw" style={{ "--d": "0.44s" }}>Infrastructure.</span>
+          </h1>
+
+          <p className={`its-hero-sub ${heroIn ? "its-hero-sub--in" : ""}`}>
+            A comprehensive range of managed IT services — Desktop Management, Server Solutions,
+            Network Management, Security Management and beyond.
+          </p>
+
+          <div className={`its-hero-ctas ${heroIn ? "its-hero-ctas--in" : ""}`}>
+            <button className="its-btn-glow">Get a Free Consultation →</button>
+            <button className="its-btn-outline-w">Explore Services ↓</button>
+          </div>
+        </div>
+
+        {/* stat bar */}
+        <div className={`its-statbar ${heroIn ? "its-statbar--in" : ""}`}>
+          {heroStats.map((s, i) => (
+            <div key={i} className="its-hero-stat">
+              <span className="its-hs-val">{s.val}</span>
+              <span className="its-hs-lbl">{s.lbl}</span>
+            </div>
+          ))}
+          <div className="its-hero-stat its-hs-live">
+            <span className="its-live-dot" />
+            <span className="its-hs-lbl">All Services Active</span>
+          </div>
+        </div>
+
+        {/* scroll cue */}
+        <div className={`its-scroll-cue ${heroIn ? "its-scroll-cue--in" : ""}`}>
+          <div className="its-scroll-mouse"><div className="its-scroll-wheel" /></div>
+          <span>Scroll</span>
         </div>
       </div>
 
-      {/* divider */}
+      {/* ══ MARQUEE ══ */}
+      <div className="its-marquee">
+        <div className="its-marquee-track">
+          {["IT Infrastructure","AMC Services","Facility Management","Security","Network Mgmt",
+            "Data Centre","Server Backup","Desktop Mgmt","Anti-Virus Support",
+            "IT Infrastructure","AMC Services","Facility Management","Security","Network Mgmt",
+            "Data Centre","Server Backup","Desktop Mgmt","Anti-Virus Support"].map((b, i) => (
+            <span className="its-marquee-item" key={i}>
+              <span className="its-marquee-dot" />{b}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ══ ABOUT — 2-col magazine ══ */}
+      <section className="its-about" ref={aboutRef}>
+        <img src={abstractVector} alt="" className="its-about-vector" aria-hidden="true" />
+        <div className={`its-about-inner ${aboutIn ? "its-about-inner--in" : ""}`}>
+          <div className="its-about-left">
+            <span className="its-chip">Who We Are</span>
+            <h2 className="its-about-h2">
+              Your trusted partner for<br />
+              <em>end-to-end IT management.</em>
+            </h2>
+          </div>
+          <div className="its-about-right">
+            <p className="its-about-p">
+              IT infrastructure plays a vital role in every organisation. A robust and
+              well-maintained IT infrastructure enhances business performance. We offer
+              a comprehensive range of managed IT services including Desktop Management,
+              Managed Server Solutions, Network Management, and Security Management.
+            </p>
+            <p className="its-about-p">
+              With our combined skill set and experience, our support team responds quickly,
+              resolves issues <strong>proactively</strong>, and ensures smooth management of
+              all your IT assets.
+            </p>
+            <div className="its-about-chips">
+              {["AMC","Facility Mgmt","Security","On-site Support","Data Centre","Network Mgmt"].map(c => (
+                <span key={c} className="its-about-chip">{c}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ HIGHLIGHT STRIP ══ */}
+      <section className="its-hl-strip">
+        {highlights.map((h, i) => (
+          <div key={i} className="its-hl-card">
+            <div className="its-hl-num">0{i + 1}</div>
+            <div className="its-hl-icon">{h.icon}</div>
+            <h3 className="its-hl-title">{h.title}</h3>
+            <p className="its-hl-desc">{h.desc}</p>
+            <div className="its-hl-bar" />
+          </div>
+        ))}
+      </section>
+
+      {/* ══ DIVIDER ══ */}
       <div className="its-divider">
         <span className="its-divider-line" />
         <span className="its-divider-text">Our Services Portfolio</span>
         <span className="its-divider-line" />
       </div>
 
-      {/* ── SERVICES GRID ── */}
+      {/* ══ SERVICES GRID ══ */}
       <div className="its-grid-wrap" ref={gridRef}>
         <div className={`its-grid-head ${gridIn ? "its-grid-head--in" : ""}`}>
           <span className="its-mini-tag">What We Offer</span>
@@ -193,13 +233,37 @@ export default function ITServices() {
             improve reliability, and secure your infrastructure.
           </p>
         </div>
-
         <div className="its-grid">
-          {services.map((s, i) => (
-            <ServiceCard key={i} service={s} index={i} />
-          ))}
+          {services.map((s, i) => <ServiceCard key={i} service={s} index={i} />)}
         </div>
       </div>
+
+      {/* ══ CTA — full bleed ══ */}
+      <section className="its-cta">
+        <img
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80"
+          alt="" className="its-cta-bg-img"
+        />
+        <div className="its-cta-overlay" />
+        <div className="its-cta-content">
+          <p className="its-cta-eyebrow"><span className="its-eline" />Get in Touch</p>
+          <h2 className="its-cta-h2">Need managed IT services<br />for your organisation?</h2>
+          <p className="its-cta-sub">
+            Tell us your requirements. Our team will respond quickly, resolve issues
+            proactively, and manage your IT assets end-to-end.
+          </p>
+          <div className="its-cta-row">
+            <button className="its-btn-glow">Request a Consultation →</button>
+            <div className="its-cta-phone">
+              <span>📞</span>
+              <div>
+                <p className="its-phone-lbl">Call Us</p>
+                <p className="its-phone-val">+91 98438 65065</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </section>
   );
