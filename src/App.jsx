@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route,useLocation } from 'react-router
 import CadDesignerLandingPage from './components/CadDesignerLandingPage'
 import AboutSection from './components/AboutSection'
 import TestimonialsSection from './components/TestimonialsSection'
-import CasestudiesSection from './components/CaseStudiesSection'
+import CasestudiesSection from './components/CasestudiesSection'
 import Header from "./components/Header";
 import Footer from "./components/SiteFooter";
 import ServicesSection from "./components/ServicesSection";
